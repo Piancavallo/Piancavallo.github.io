@@ -1,0 +1,82 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 1rem;
+    text-decoration: none;
+}
+
+section {
+    padding: 2rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+:root{
+  --bg:#f7f4ee;
+  --card:#fff;
+  --accent:#0aa;
+  --muted:#6b6b6b;
+  --max-width:1100px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+body{
+  background: var(--bg);
+  color:#222;
+  margin:0;
+  padding:2rem;
+  display:flex;
+  justify-content:center;
+}
+
+main{ max-width:var(--max-width); width:100%; }
+
+.site-header{ text-align:center; margin-bottom:1rem; }
+.name{ font-family:'Indie Flower', cursive; font-size:2.2rem; margin:0; }
+.tagline{ color:var(--muted); margin:0.2rem 0 1rem; }
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:1rem;
+}
+
+.card{
+  background:var(--card);
+  padding:1rem;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+  transform: rotate(-1deg);
+  transition: transform .18s ease, box-shadow .18s ease;
+  border-radius:6px;
+}
+.card:hover{ transform: translateY(-6px) rotate(0deg); box-shadow:0 14px 32px rgba(0,0,0,0.12); }
+
+.polaroid{ text-align:center; margin-bottom:1rem; }
+.polaroid img{ width:180px; border:12px solid #fff; box-shadow:0 8px 20px rgba(0,0,0,0.12); transform:rotate(2deg); }
+
+/* ...existing code... */
