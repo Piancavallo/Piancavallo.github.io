@@ -37,46 +37,156 @@ footer {
 }
 
 :root{
-  --bg:#f7f4ee;
-  --card:#fff;
-  --accent:#0aa;
+  --bg:#f7f8fa;
+  --card:#ffffff;
+  --accent:#0a84ff;
   --muted:#6b6b6b;
   --max-width:1100px;
-  font-family: 'Montserrat', Arial, sans-serif;
+  --page-padding:24px;
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
 
+/* reset / base */
+*{box-sizing:border-box}
+html,body{height:100%}
 body{
-  background: var(--bg);
-  color:#222;
   margin:0;
-  padding:2rem;
+  background:var(--bg);
+  color:#222;
+  font-family:var(--font-family);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* header: full width top header */
+.site-header{
+  background: #ffffff;
+  border-bottom: 1px solid #e6e9ee;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.header-inner{
+  max-width:var(--max-width);
+  margin:0 auto;
   display:flex;
-  justify-content:center;
+  justify-content:space-between;
+  align-items:center;
+  padding:calc(var(--page-padding) * 0.75) var(--page-padding);
 }
-
-main{ max-width:var(--max-width); width:100%; }
-
-.site-header{ text-align:center; margin-bottom:1rem; }
-.name{ font-family:'Indie Flower', cursive; font-size:2.2rem; margin:0; }
-.tagline{ color:var(--muted); margin:0.2rem 0 1rem; }
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:1rem;
+.name{
+  margin:0;
+  font-size:1.25rem;
+  font-weight:700;
+  letter-spacing:0.2px;
+  color:#111;
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 }
-
-.card{
-  background:var(--card);
-  padding:1rem;
-  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
-  transform: rotate(-1deg);
-  transition: transform .18s ease, box-shadow .18s ease;
+.site-nav a{
+  color:#444;
+  text-decoration:none;
+  margin-left:1rem;
+  font-size:0.95rem;
+  padding:6px 8px;
   border-radius:6px;
 }
-.card:hover{ transform: translateY(-6px) rotate(0deg); box-shadow:0 14px 32px rgba(0,0,0,0.12); }
+.site-nav a:hover,
+.site-nav a:focus{
+  background:rgba(10,132,255,0.08);
+  color:var(--accent);
+  outline:none;
+}
 
-.polaroid{ text-align:center; margin-bottom:1rem; }
-.polaroid img{ width:180px; border:12px solid #fff; box-shadow:0 8px 20px rgba(0,0,0,0.12); transform:rotate(2deg); }
+/* tagline */
+.site-header .tagline{
+  max-width:var(--max-width);
+  margin:4px auto 16px;
+  padding:0 var(--page-padding);
+  color:var(--muted);
+  font-size:0.95rem;
+}
 
-/* ...existing code... */
+/* main content wrapper */
+main{
+  max-width:var(--max-width);
+  margin:0 auto;
+  padding:0 var(--page-padding) 48px;
+}
+
+/* hero */
+.hero{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:24px 0;
+}
+.hero-photo{
+  width:140px;
+  height:140px;
+  object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  border:1px solid #eef2f6;
+}
+.hero-caption{ color:var(--muted); margin-top:12px; }
+
+/* grid of cards (clean, no rotation) */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+  margin-top:16px;
+}
+.card{
+  background:var(--card);
+  padding:16px;
+  border-radius:8px;
+  box-shadow:0 6px 16px rgba(18,18,18,0.04);
+  transition:transform .16s ease, box-shadow .16s ease;
+}
+.card img{ width:100%; height:140px; object-fit:cover; border-radius:6px; display:block; margin-bottom:10px; }
+.card:hover{ transform:translateY(-6px); box-shadow:0 18px 36px rgba(18,18,18,0.08); }
+.card time{ font-size:0.85rem; color:var(--muted); }
+
+/* tags */
+.tags{ margin-top:8px; }
+.tags span{
+  font-size:0.8rem;
+  color:var(--accent);
+  margin-right:8px;
+}
+
+/* sections */
+section{ margin-top:28px; }
+
+/* contact button */
+.btn{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:6px;
+  text-decoration:none;
+  font-weight:600;
+}
+.btn:hover{ opacity:0.95; }
+
+/* footer */
+footer{
+  text-align:center;
+  padding:24px;
+  color:var(--muted);
+  font-size:0.9rem;
+  border-top:1px solid #eef2f6;
+  background:#fff;
+  margin-top:36px;
+}
+
+/* responsive tweaks */
+@media (max-width:640px){
+  .header-inner{ padding:12px; }
+  .site-nav a{ margin-left:8px; font-size:0.9rem; }
+  .hero-photo{ width:120px; height:120px; }
+}
