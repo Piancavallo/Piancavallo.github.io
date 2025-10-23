@@ -25,41 +25,94 @@
   <main>
     <section id="hero" class="hero">
       <img src="images/me.jpg" alt="Conner" class="hero-photo">
-      <p class="hero-caption">A few lines about me — quick, friendly, human.</p>
+      <p class="hero-caption">I'm just a guy and here's some stuff about me, also I made this website.</p>
     </section>
 
-    <section id="scrapbook" class="grid">
+    <section id="scrapbook" class="grid" aria-label="Scrapbook">
       <!-- example card -->
       <article class="card">
         <time datetime="2025-10-01">Oct 2025</time>
-        <img src="images/project1.jpg" alt="">
+        <img src="images/project1.jpg" alt="Project thumbnail">
         <h3>Random Project / Memory</h3>
-        <p>One-sentence caption that gives personality.</p>
+        <p>placeholder text — I'll fill this in later.</p>
         <div class="tags"><span>#html</span> <span>#photography</span></div>
       </article>
     </section>
 
-    <section id="story">
+    <section id="story" aria-label="Story and experience">
       <h2>Story & Experience</h2>
       <p>Highlight: 4 years in the Air Force — framed as skills, values, and stories.</p>
     </section>
 
-    <section id="demos">
+    <section id="demos" aria-label="Mini demos">
       <h2>Mini Demos</h2>
       <div class="demo-list">
-        <!-- small interactive snippets -->
+        <!-- 1) CSS animated card (no JS) -->
+        <div class="demo demo-card" tabindex="0" aria-label="Interactive card demo">
+          <h3>Interactive Card</h3>
+          <p>Hover or focus to reveal details.</p>
+        </div>
+
+        <!-- 2) Theme toggle (JS + CSS variables) -->
+        <div class="demo demo-theme" aria-label="Theme toggle demo">
+          <button id="themeToggle" aria-pressed="false" type="button">Toggle theme</button>
+          <p class="demo-note">Click me to change between dark and light mode.</p>
+        </div>
+
+        <!-- 3) Typewriter intro (JS) -->
+        <div class="demo demo-typewriter" aria-label="Typewriter demo">
+          <div id="typewriter" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-label="Contact and resume">
       <h2>Contact & Resume</h2>
       <a href="resume.pdf" download class="btn">Download Resume</a>
-      <p>Links: <a href="#">LinkedIn</a> • <a href="#">GitHub</a></p>
+      <p>Links: <a href="#">Resume</a> • <a href="#">GitHub</a></p>
     </section>
   </main>
 
   <footer>
-    <p>Built with HTML & CSS.</p>
+    <p>Built with care.</p>
   </footer>
+
+  <!-- demo scripts -->
+  <script>
+  (function(){
+    // Theme toggle: persist to localStorage and set data-theme on <html>
+    const btn = document.getElementById('themeToggle');
+    if (!btn) return;
+    const key = 'site-theme';
+    const applyTheme = t => document.documentElement.setAttribute('data-theme', t);
+    const saved = localStorage.getItem(key) || 'light';
+    applyTheme(saved);
+    btn.setAttribute('aria-pressed', saved === 'dark');
+    btn.addEventListener('click', () => {
+      const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(key, next);
+      btn.setAttribute('aria-pressed', next === 'dark');
+    });
+  })();
+  </script>
+
+  <script>
+  (function(){
+    // Typewriter
+    const el = document.getElementById('typewriter');
+    if (!el) return;
+    const text = "Hi — I'm Conner. I build simple, thoughtful web things.";
+    let i = 0;
+    function tick() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(tick, 28);
+      }
+    }
+    tick();
+  })();
+  </script>
 </body>
 </html>
